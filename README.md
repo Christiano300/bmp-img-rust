@@ -1,7 +1,7 @@
-# 1-image-generation
+# bitmap image-generation
 
 For groups 3-4 ppl, those who are already familiar with rust may act as coaches :)
-
+This is a bit of a competition, we will compare results during the next lesson.
 
 For each of the below, take in a file name (how you do this is your choice),
 and if it doesn't exist, create a bmp. If it does exist but isn't a valid BMP,
@@ -11,9 +11,7 @@ as many tasks as possible within the hour.
 ## Tasks
 - Draw a single pixel of any color, anywhere on the image.
 - Draw a diagonal line of any color, across one diagonal of a square canvas. Error if the canvas is not square.
-- Draw an X shape of any color, across the whole of a canvas. 
 - Draw a house shape.
-- Draw the outline of a square or rectangle (up to you) on a canvas. The width and coordnates of the square should be specified by the user
 - Draw a filled-in square on a canvas. The outline should be a different colour to the filling-
 - Draw a 1000x600 pixel flag of Austria (entire canvas)
 - Draw a 1000x600 pixel flag of Finland (entire canvas)
@@ -23,6 +21,9 @@ as many tasks as possible within the hour.
     - If f1 and f2 have the same dimensions; print the first row of the first; then the second row of the second, then the third row of the first, fourth row of the second, and so on
     - Copy f1 on top of f2. If f1 does not fit inside f2, print an appropriate error message
 
+**Still not bored?**
+- come up with your own idea
+- if you never heared of it try this one (python code is there) [mandelbrot](https://en.wikipedia.org/wiki/Mandelbrot_set)
 
 ## Things that might be useful
 code to create a simple bmp image. In bmp images you specify a pixel an 
@@ -31,6 +32,17 @@ let mut image = Image::new(100, 100); // create a bmp image width, height
 image.set_pixel(50, 50, Pixel::new(255, 255, 255)); // set a pixel at x,y, with r,g,b (0-255 u8)
 image.save(path) // saves image at path (string - full or relative path)
 ````
+
+check if a bmp is valid and return a bool (we will discuss in detail with enums)
+````rust
+fn valid(file_path: &str) -> bool {
+    match bmp::open(file_path) {
+        Ok(_) => true,
+        Err(_) => false,
+    }
+}
+````
+
 we might also need some loops ;)
 
 ## sinus wave
